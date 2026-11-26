@@ -1,7 +1,17 @@
+import './TodoItem.css';
+
+
 const TodoItem = () => {
     return (
         <div className="TodoItem">
-            <h2>TodoItem 컴퍼넌트</h2>
+            <div className='checkbox_col'>
+                <input type="checkbox" />
+            </div>
+            <div className='title_col'>할 일 출력</div>
+            <div className='date_col'>{new Date().toLocaleDateString()}</div>
+            <div className='btn_col'>
+                <button>삭제</button>
+            </div>
         </div>
     );
 }
