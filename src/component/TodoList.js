@@ -23,10 +23,17 @@ const TodoList = ({todoList, onUpdate, onDelete}) => {
 
     }
 
+    const onKeyDown = (e) => {//엔터키 입력 이벤트 핸들러
+        //ESC키의 코드번호 27
+        if(e.keyCode === 27) {//엔터키의 코드번호 13
+            setSearch("");// search 값 초기화-> 검색란이 빈칸으로 초기화
+        }
+    }
+
     return (
         <div className="TodoList">
             <h4>TodoList 🌱</h4>
-            <input value={search} onChange={onChangeSearch} className="searchbar" placeholder="검색어를 입력하세요"/>
+            <input value={search} onKeyDown={onKeyDown} onChange={onChangeSearch} className="searchbar" placeholder="검색어를 입력하세요"/>
             <div className='list_wrapper'>
                 {
                     getSearchResult().map((item) => (
