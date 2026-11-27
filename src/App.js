@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react';
+import React, { useReducer, useRef } from 'react';
 import './App.css';
 import Header from './component/Header.js';
 import TodoEditor from './component/TodoEditor.js';
@@ -34,6 +34,8 @@ const reducer = (state, action) => {
       
   }
 }
+
+export const TodoContext = React.createContext();//context생성
 
 function App() {
 
@@ -141,10 +143,11 @@ function App() {
 
   return (
     <div className="App">
-      
       <Header />
-      <TodoEditor onCreate={onCreate} />
-      <TodoList  todoList={todoList} onUpdate={onUpdate} onDelete={onDelete}/>
+      <TodoContext.Provider value={{onCreate, todoList, onUpdate, onDelete}}>
+        <TodoEditor />
+        <TodoList />
+      </TodoContext.Provider>
     </div>
   );
 }

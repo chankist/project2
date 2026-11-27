@@ -1,5 +1,6 @@
-import { useReducer, useRef } from 'react';
+import { useContext, useReducer, useRef } from 'react';
 import './TodoEditor.css';
+import { TodoContext } from '../App';
 
 function reducer(state, action) {
     switch(action.type) {
@@ -13,7 +14,9 @@ function reducer(state, action) {
 
 }
 
-const TodoEditor = ({onCreate}) => {
+const TodoEditor = () => {
+
+    const {onCreate} = useContext(TodoContext);
 
     const [content, dispatch] = useReducer(reducer, "");
 
